@@ -108,7 +108,7 @@ export default function Home() {
                 <span className="text-[10px] text-gray-500 tracking-widest group-hover:text-gold transition-colors">@dlan12_</span>
               </a>
               <a 
-                href="https://github.com/DlllianINF" 
+                href="https://github.com/DillanINF" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="group flex flex-col items-center gap-2"

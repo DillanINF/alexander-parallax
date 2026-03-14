@@ -71,7 +71,7 @@ export default function Navigation() {
               <Instagram size={18} />
             </a>
             <a 
-              href="https://github.com/DlllianINF" 
+              href="https://github.com/DillanINF" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-gold transition-colors"
@@ -90,7 +90,7 @@ export default function Navigation() {
               <Instagram size={18} />
             </a>
             <a 
-              href="https://github.com/DlllianINF" 
+              href="https://github.com/DillanINF" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-gold transition-colors"
