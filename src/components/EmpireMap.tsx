@@ -37,54 +37,47 @@ export default function EmpireMap() {
           {/* Subtle Map Background Pattern */}
           <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/paper.png')] pointer-events-none" />
           
-          {/* Animated Conquest Path */}
-          <svg className="absolute inset-0 w-full h-full p-12 overflow-visible" viewBox="0 0 1000 400">
-            <motion.path
-              d="M 150 140 L 300 180 L 350 300 L 550 220 L 700 260 L 900 280"
-              fill="transparent"
-              stroke="#D4AF37"
-              strokeWidth="2"
-              strokeDasharray="0 1"
-              style={{ pathLength: scrollYProgress }}
-              className="drop-shadow-[0_0_8px_rgba(212,175,55,0.5)]"
-            />
-            
-            {/* Legend Lines and Markers */}
-            {REGIONS.map((region, i) => (
-              <motion.g 
-                key={i}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.2 }}
+      {/* Animated Conquest Path */}
+      <div className="absolute inset-0 p-4 md:p-12 overflow-visible">
+        <svg className="w-full h-full" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid meet">
+          <motion.path
+            d="M 150 140 L 300 180 L 350 300 L 550 220 L 700 260 L 900 280"
+            fill="transparent"
+            stroke="#D4AF37"
+            strokeWidth="2"
+            strokeDasharray="0 1"
+            style={{ pathLength: scrollYProgress }}
+            className="drop-shadow-[0_0_8px_rgba(212,175,55,0.5)]"
+          />
+          
+          {/* Legend Lines and Markers */}
+          {REGIONS.map((region, i) => (
+            <motion.g 
+              key={i}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.2 }}
+            >
+              <circle 
+                cx={region.coord.x} 
+                cy={region.coord.y} 
+                r="4" 
+                className="fill-gold animate-pulse" 
+              />
+              <text 
+                x={region.coord.x} 
+                y={region.coord.y} 
+                dy="-15" 
+                className="fill-gray-500 text-[8px] md:text-[10px] tracking-[0.1em] md:tracking-[0.2em] font-bold text-center uppercase"
+                textAnchor="middle"
               >
-                <circle 
-                  cx={region.coord.x} 
-                  cy={region.coord.y} 
-                  r="4" 
-                  className="fill-gold animate-pulse" 
-                />
-                <text 
-                  x={region.coord.x} 
-                  y={region.coord.y} 
-                  dy="-15" 
-                  className="fill-gray-500 text-[10px] tracking-[0.2em] font-bold text-center uppercase"
-                  textAnchor="middle"
-                >
-                  {region.name}
-                </text>
-                <text 
-                  x={region.coord.x} 
-                  y={region.coord.y} 
-                  dy="25" 
-                  className="fill-gold/50 text-[8px] tracking-[0.1em]"
-                  textAnchor="middle"
-                >
-                  {region.year}
-                </text>
-              </motion.g>
-            ))}
-          </svg>
+                {region.name}
+              </text>
+            </motion.g>
+          ))}
+        </svg>
+      </div>
 
           {/* Map Interaction Hint */}
           <div className="absolute bottom-6 left-6 text-[10px] text-gray-600 tracking-widest uppercase font-medium">

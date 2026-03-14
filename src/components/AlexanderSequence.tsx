@@ -118,16 +118,20 @@ export default function AlexanderSequence() {
       const index = Math.floor(frameIndex.get());
       const img = images[index - 1] || images[0];
       
-      // Responsive canvas sizing
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      // Handle high-DPI displays (Retina) for sharp images
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      ctx.scale(dpr, dpr);
 
       // Draw image centered and covering the canvas (similar to object-fit: cover)
-      const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
-      const x = (canvas.width / 2) - (img.width / 2) * scale;
-      const y = (canvas.height / 2) - (img.height / 2) * scale;
+      const scale = Math.max(window.innerWidth / img.width, window.innerHeight / img.height);
+      const x = (window.innerWidth / 2) - (img.width / 2) * scale;
+      const y = (window.innerHeight / 2) - (img.height / 2) * scale;
       
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
       ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
     };
 

@@ -14,22 +14,22 @@ export default function Home() {
       <Navigation />
       
       {/* Hero Section */}
-      <section id="hero" className="h-screen flex flex-col items-center justify-center text-center relative z-20 pointer-events-none">
+      <section id="hero" className="h-[100svh] flex flex-col items-center justify-center text-center relative z-20 px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="flex flex-col items-center"
+          className="flex flex-col items-center w-full"
         >
-          <h2 className="text-[#D4AF37] text-sm tracking-[0.5em] font-medium mb-6">
+          <h2 className="text-[#D4AF37] text-[10px] md:text-sm tracking-[0.3em] md:tracking-[0.5em] font-medium mb-4 md:mb-6">
             SON OF AMMON
           </h2>
-          <h1 className="text-7xl md:text-[12rem] font-bold tracking-tighter leading-none mb-8 gold-gradient">
+          <h1 className="text-5xl sm:text-7xl md:text-[12rem] font-bold tracking-tighter leading-none mb-6 md:mb-8 gold-gradient">
             ALEXANDER
           </h1>
-          <div className="flex items-center gap-4 text-[#A0A0A0] text-sm tracking-widest">
+          <div className="flex items-center gap-3 md:gap-4 text-[#A0A0A0] text-[10px] md:text-sm tracking-widest whitespace-nowrap">
             <span>MACEDON</span>
-            <div className="w-12 h-[1px] bg-[#D4AF37]" />
+            <div className="w-8 md:w-12 h-[1px] bg-[#D4AF37]" />
             <span>356 — 323 BC</span>
           </div>
         </motion.div>

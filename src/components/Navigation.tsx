@@ -61,6 +61,25 @@ export default function Navigation() {
             ))}
           </div>
 
+          <div className="md:hidden flex items-center gap-4">
+            <a 
+              href="https://instagram.com/dlan12_" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-gold transition-colors"
+            >
+              <Instagram size={18} />
+            </a>
+            <a 
+              href="https://github.com/DlllianINF" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-gold transition-colors"
+            >
+              <Github size={18} />
+            </a>
+          </div>
+
           <div className="hidden md:flex items-center gap-6">
             <a 
               href="https://instagram.com/dlan12_" 
