@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Instagram, Github } from "lucide-react";
+import { useRef } from "react";
 import AlexanderSequence from "@/components/AlexanderSequence";
 import Navigation from "@/components/Navigation";
 import Timeline from "@/components/Timeline";
@@ -80,12 +81,11 @@ export default function Home() {
       </section>
 
       {/* Footer / Conclusion */}
-      <footer className="h-[70vh] flex flex-col items-center justify-center text-center bg-[#050505] relative z-20 border-t border-gold/10">
-        <div className="max-w-4xl px-6">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-8 italic">
-            "I am not afraid of an army of lions led by a sheep; I am afraid of an army of sheep led by a lion."
-          </h2>
-          <div className="flex flex-col items-center">
+      <footer className="h-[120vh] flex flex-col items-center justify-center text-center bg-[#050505] relative z-20 border-t border-gold/10 overflow-hidden">
+        <div className="max-w-5xl px-6 relative">
+          <ScrollRevealText text="I am not afraid of an army of lions led by a sheep; I am afraid of an army of sheep led by a lion." />
+          
+          <div className="flex flex-col items-center mt-12">
             <div className="w-24 h-[1px] bg-gold mb-6" />
             <p className="text-[#D4AF37] tracking-widest text-sm font-bold">
               ALEXANDER III OF MACEDON
@@ -93,7 +93,7 @@ export default function Home() {
             <p className="text-gray-500 text-[10px] tracking-[0.3em] mt-2 uppercase">The Greatest Conqueror in History</p>
           </div>
           
-          <div className="mt-20 flex flex-col items-center gap-6">
+          <div className="mt-24 flex flex-col items-center gap-6">
             <p className="text-gray-600 text-[10px] tracking-[0.4em] uppercase">Developed By</p>
             <div className="flex items-center gap-8">
               <a 
@@ -123,5 +123,37 @@ export default function Home() {
         </div>
       </footer>
     </main>
+  );
+}
+
+function ScrollRevealText({ text }: { text: string }) {
+  const targetRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start end", "end center"],
+  });
+
+  const words = text.split(" ");
+
+  return (
+    <div ref={targetRef} className="flex flex-wrap justify-center gap-x-4 gap-y-2">
+      {words.map((word, i) => {
+        const start = i / words.length;
+        const end = start + 1 / words.length;
+        return <Word key={i} progress={scrollYProgress} range={[start, end]}>{word}</Word>;
+      })}
+    </div>
+  );
+}
+
+function Word({ children, progress, range }: { children: string; progress: any; range: [number, number] }) {
+  const opacity = useTransform(progress, range, [0.15, 1]);
+  return (
+    <span className="relative text-4xl md:text-7xl font-bold tracking-tighter leading-tight">
+      <span className="absolute opacity-[0.15] text-white">{children}</span>
+      <motion.span style={{ opacity }} className="text-white">
+        {children}
+      </motion.span>
+    </span>
   );
 }
