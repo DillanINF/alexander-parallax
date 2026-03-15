@@ -81,7 +81,7 @@ export default function Home() {
       </section>
 
       {/* Footer / Conclusion */}
-      <footer className="h-[120vh] flex flex-col items-center justify-center text-center bg-[#050505] relative z-20 border-t border-gold/10 overflow-hidden">
+      <footer className="h-[120vh] flex flex-col items-center justify-center text-center bg-[#050505] relative z-20 border-t border-gold/10 overf low-hidden">
         <div className="max-w-5xl px-6 relative">
           <ScrollRevealText text="I am not afraid of an army of lions led by a sheep; I am afraid of an army of sheep led by a lion." />
           
